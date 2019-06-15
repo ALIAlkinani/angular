@@ -20,8 +20,8 @@ export class AppComponent {
     new Hero(2, 'Sarah'),
     new Hero(3, 'Mohammad'),
     new Hero(4, 'Magneta'),
-    new Hero(5, 'Jones'),
-  ]
+    new Hero(5, 'Jones')
+  ];
   title = 'displaying-data';
 
   myHero = this.heroes[0];
