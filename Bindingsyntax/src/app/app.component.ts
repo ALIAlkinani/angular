@@ -10,7 +10,7 @@ export class AppComponent {
     @ViewChild('bindingInput', {static: false}) bindingInput: ElementRef;
   title = 'Binding syntax';
     isUnchanged = true;
-    itemImageUrl = '../download.png';
+    itemImageUrl = '../images.png';
     getHTMLAttributeValue(): any {
         console.warn('html attribute value:', this.bindingInput.nativeElement.getAttribute('value'));
 
