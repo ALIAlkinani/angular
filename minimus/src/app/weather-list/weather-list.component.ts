@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WeatherItems} from '../mock-weatherItems';
+import {WeatherService} from '../weather.service';
+import {WeatherItem} from '../weatherItem';
 
 
 @Component({
@@ -8,10 +10,13 @@ import {WeatherItems} from '../mock-weatherItems';
   styleUrls: ['./weather-list.component.css']
 })
 export class WeatherListComponent implements OnInit {
- weatherItems = WeatherItems;
-  constructor() { }
+ weatherItems = WeatherItem[0];
+  constructor( private weatherService: WeatherService ) { }
 
   ngOnInit() {
+    this.getWeatherItem();
   }
-
+getWeatherItem(): void {
+    this.weatherItems = this.weatherService.getWeatherItem();
+}
 }
