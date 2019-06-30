@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {WeatherItems} from '../mock-weatherItems';
+
 
 @Component({
   selector: 'app-weather-list',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather-list.component.css']
 })
 export class WeatherListComponent implements OnInit {
-
+ weatherItems = WeatherItems;
   constructor() { }
 
   ngOnInit() {
