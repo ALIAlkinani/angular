@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WeatherItems} from '../mock-weatherItems';
+
 import {WeatherService} from '../weather.service';
 import {WeatherItem} from '../weatherItem';
 
