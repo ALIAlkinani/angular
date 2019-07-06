@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Subject} from 'rxjs';
+
+
+
 import {WeatherService} from '../weather.service';
+import {WeatherItem} from '../weatherItem';
+
 
 
 @Component({
@@ -9,16 +13,26 @@ import {WeatherService} from '../weather.service';
   styleUrls: ['../app.component.css']
 })
 export class WeatherSearchComponent implements OnInit {
-  private searchStream = new Subject<string>();
-  data: any = {};
 
 
-  constructor( private weatherService: WeatherService) { }
+
+  constructor( private weather: WeatherService) {
+  }
+
 
   ngOnInit() {
   }
 
     onSubmit(formData) {
-      alert('You location is : ' + formData.location);
+    this.weather.getWeatherData(formData.location).subscribe(
+        data => {
+          const weatherItem = new WeatherItem(data.observations.location[0].city ,
+              data.observations.location[0].observation[0].temperature,
+              data.observations.location[0].observation[0].skyDescription,
+              data.observations.location[0].observation[0].iconLink);
+          this.weather.addWeatherItem(weatherItem);
+        }
+    );
+
     }
 }
