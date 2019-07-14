@@ -1,0 +1,38 @@
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="9">
+  <agm-marker [latitude]="lat" [longitude]="lng" >
+    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+      <ng-template>
+
+        <h3>Harbor Sydney</h3>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+  <agm-marker [latitude]="lat1" [longitude]="lng1">
+    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+      <ng-template>
+      my location
+        <h3>speed: {{speed}}</h3>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+
+  <agm-marker  *ngFor="let ferry of ferries"  [latitude]="ferry.lat" [longitude]="ferry.lng " iconUrl='../../assets/img/ferry-48.png' >
+    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+      <ng-template>
+        <p>id: {{ferry.id}}</p>
+          <p>Ferry Type: {{ferry.type}}</p>
+        <h3>speed: {{ferry.speed}}</h3>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+</agm-map>
+<div class="sidebar"*ngFor = "let ferry of ferries " >
+  <p>  {{ferry.type}}</p>
+      <label >
+    Far from the harbor:
+    {{ferry.distance}} km</label>
+
+</div>
