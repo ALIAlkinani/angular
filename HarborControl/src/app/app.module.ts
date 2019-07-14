@@ -21,7 +21,7 @@ import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     HttpClientJsonpModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCmvqErmxk__o1Smjytwv27TchBqaKUp3Q'
+      apiKey: 'your google map key'
     }),
     AgmSnazzyInfoWindowModule
   ],
