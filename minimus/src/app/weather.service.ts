@@ -34,4 +34,7 @@ export class WeatherService {
  }
 
 
+  clearWeatherItems() {
+    WeatherItems.splice(0);
+  }
 }

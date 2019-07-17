@@ -1,0 +1,96 @@
+/* HeroSearch private styles */
+
+.weather-search {
+    margin: 20px auto;
+    width: 60%;
+    text-align: center;
+}
+.search-input{
+    float: left;
+    width: 65%;
+    padding: 0;
+    margin-left: 20px;
+    margin-right: 0px;
+}
+.search-buttons{
+    float: right;
+    width: 20%;
+}
+label {
+    font-weight: bold;
+
+}
+
+button, input {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+
+
+button {
+    background-color: #2ecc71;
+
+    font-size: 12px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    color: white;
+}
+button.clear{
+    margin-left: 5px;
+    background-color: red;
+}
+button:hover {
+    background-color: #27ae60;
+}
+.search-result{
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.search-result li a {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+
+
+
+}
+
+.search-result li:hover {
+    background-color: #607D8B;
+}
+
+.search-result li a {
+    color: #888;
+    display: block;
+    text-decoration: none;
+}
+
+.search-result li a:hover {
+    color: darkblue;
+}
+.search-result li a:active {
+    color: white;
+}
+#city {
+    width: 87%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+
+
+}
+
+
+ul.search-result {
+    margin-top: 0;
+    padding-left: 0;
+}
