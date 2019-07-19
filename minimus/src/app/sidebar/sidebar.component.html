@@ -5,10 +5,5 @@
   <p>Cities: {{ profile.cities.join(', ') }}</p>
   <span class="delete" (click)="onDeleteProfile($event, profile)">X</span>
 </article>
-<ul class="search-result">
-  <li *ngFor="let country of countries" >
 
-    {{country.city}} || {{country.country}}
 
-  </li>
-</ul>

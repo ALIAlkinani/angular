@@ -1,0 +1,26 @@
+
+<section class="weather-search">
+
+  <form #form = "ngForm"(ngSubmit)="onSubmit(form.value)" >
+    <div class="search-input">
+      <label for="city">City</label>
+
+      <input type = "text" name = "city" placeholder = "location" ngModel id = "city" #city >
+
+
+
+      <div>City found: <span > </span> </div>
+    </div>
+    <div>
+      <button type="submit">Add City</button>
+      <button type="button" class="clear" (click)="clear()">Clear list</button>    </div>
+  </form>
+
+  <div *ngIf="loading">
+    <img src="../../assets/icons/Spinner-1s-200px.svg">
+  </div>
+
+</section>
+
+
+

@@ -41,7 +41,9 @@ export class SidebarComponent implements OnInit {
   onLoadProfile(profile: Profile) {
     this.weatherServices.clearWeatherItems();
 
-    for (let i = 0; i <= profile.cities.length; i++) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < profile.cities.length; i++) {
+        console.log('profile', profile.cities[i]);
         this.weatherServices.getWeatherData(profile.cities[i]).subscribe(data => {
           const weatherItem = new WeatherItem(data.observations.location[0].city ,
               data.observations.location[0].observation[0].temperature,
