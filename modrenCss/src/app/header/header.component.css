@@ -1,0 +1,62 @@
+
+header {
+  font-family: 'Tangerine', serif;
+
+  background-image: var(--main-bg-color);
+
+  margin: 0;
+
+
+
+}
+
+.section{
+ padding-top: 2.5em;
+}
+
+h1{
+  margin-top: 0;
+  font-size: 48px;
+  margin-bottom: 0px;
+}
+
+.container{
+  max-width: 1200px;
+  color: white;
+  margin: auto;
+
+}
+.header-top{
+
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between ;
+
+
+}
+.header-top a{
+  color: inherit;
+}
+nav {
+  display: flex;
+  justify-content: center;
+}
+nav a {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-family: "Microsoft Sans Serif";
+}
+
+a {
+  text-decoration: none;
+  font-size: 24px;
+  color: rgba(250,250,250,0.5);
+
+}
+
+a:hover{
+  text-decoration: underline;
+  color: white;
+}
