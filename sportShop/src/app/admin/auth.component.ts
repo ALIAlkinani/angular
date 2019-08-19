@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {AuthService} from '../model/auth.service';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
+  public username: string;
+  public password: string;
+  public errorMessage: string;
+  constructor(private router: Router, private auth: AuthService) { }
 
-  constructor() { }
+  authenticate(form: NgForm) {
+    if (form.valid) {
+     this.auth.authenicate(this.username, this.password)
+       .subscribe(response => {
+         if (response) {
+           this.router.navigateByUrl('/admin/main');
+         }
+         this.errorMessage = 'Authentication failed';
+       });
 
-  ngOnInit() {
+    } else {
+      this.errorMessage = 'Form Data Invalid';
+    }
   }
+
 
 }
