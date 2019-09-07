@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductRepository} from '../model/product.repository';
 import {Product} from '../model/product.model';
-import {Cart} from '../model/cart.model';
+import {Cart} from '../model/cart.module';
 import {Router} from '@angular/router';
+import {FirebaseService} from '../services/firebase.service';
+import {DocumentChangeAction} from '@angular/fire/firestore';
 
 
 @Component({
@@ -15,9 +17,9 @@ public selectedCategory = null;
 public productsPerPage = 4;
 public selectedPage = 1;
 
-constructor(private repository: ProductRepository, private cart: Cart, private router: Router) {
 
-  }
+constructor( private repository: ProductRepository, private cart: Cart, private router: Router) {
+    }
   get products(): Product[] {
     const pageIndex = (this.selectedPage - 1) * this.productsPerPage ;
     return this.repository.getProducts(this.selectedCategory).slice(pageIndex, pageIndex + this.productsPerPage);

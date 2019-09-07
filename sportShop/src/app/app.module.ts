@@ -12,6 +12,13 @@ import {StoreFirstGuard} from './storeFirst.guard';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {FirebaseService} from './services/firebase.service';
+import {AuthService} from './services/auth/auth.service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -22,6 +29,9 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     StoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     RouterModule.forRoot([
       {
         path: 'Store', component: StoreComponent,
@@ -47,9 +57,10 @@ the routing information it contains into the overall set of routes and complete 
       {path: '**', redirectTo: '/Store'}
     ]),
     FormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule
   ],
-  providers: [StoreFirstGuard],
+  providers: [FirebaseService, StoreFirstGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

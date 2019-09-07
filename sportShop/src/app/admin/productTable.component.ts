@@ -11,7 +11,7 @@ export class ProductTableComponent {
     return this.repositry.getProducts();
   }
 
-  deleteProduct(id: number) {
-    this.repositry.deleteProduct(id);
+  deleteProduct(id: string) {
+    this.repositry.deleteProduct(String(id));
   }
 }

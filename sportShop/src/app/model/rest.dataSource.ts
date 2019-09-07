@@ -19,6 +19,7 @@ export class RestDataSource {
     return this.http.get<Product[]>(this.baseUrl + 'products');
   }
   saveOrder(order: OrderModel): Observable<OrderModel> {
+    console.log('order', order);
     return this.http.post<OrderModel>(this.baseUrl + 'orders', order);
   }
   authenticate(user: string, pass: string): Observable<boolean> {

@@ -16,7 +16,7 @@ export class CheckoutComponent {
   submitOrder(form: NgForm) {
   this.submitted = true;
   if (form.valid) {
-    this.repositry.saveOrder(this.order).subscribe(order => {
+    this.repositry.saveOrder(this.order).order.then(order => {
       this.order.clear();
       this.orderSent = true;
       this.submitted = false;

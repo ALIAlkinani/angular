@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Cart} from './cart.model';
+import {Cart} from './cart.module';
 
 @Injectable()
 export class OrderModel {
-  public id: number;
+  public id: string;
   public name: string;
   public address: string;
   public city: string;
   public state: string;
   public zip: string;
   public country: string;
+  public canceled: boolean;
   public shipped = false;
 
   constructor(public cart: Cart) {}

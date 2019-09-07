@@ -1,42 +1,55 @@
 import {Injectable} from '@angular/core';
 import {OrderModel} from './order.model';
-import {StaticDataSource} from './static.datasource';
 import {Observable} from 'rxjs';
 import {RestDataSource} from './rest.dataSource';
+import {FirebaseService} from '../services/firebase.service';
+import {DocumentChangeAction} from '@angular/fire/firestore';
+import {AddressModule} from './address.module';
 
 @Injectable()
 export class OrderRepository {
-  private orders: OrderModel [] = [];
+  private ordersid: string[] = [];
+  private address: AddressModule[]  = [];
+  private orders: OrderModel[] = [];
   private loaded = false;
 
-  constructor(private dataSource: RestDataSource) {}
+  constructor(private firebase: FirebaseService , private dataSource: RestDataSource) {
+    this.firebase.getOrders().subscribe(orders => {
+      this.address = orders.map(o => o.payload.doc.data());
+      console.log('address', this.address);
+    });
+  }
 
   loadOrders() {
     this.loaded = true;
-    this.dataSource.getOrders().subscribe(orders => this.orders = orders);
+    // @ts-ignore
+    return this.address;
   }
 
-  getOrders(): OrderModel[] {
+  getOrders(): AddressModule[] {
     if (!this.loaded) {
       this.loadOrders();
     }
-    return this.orders;
+    return this.address;
   }
-  saveOrder(order: OrderModel): Observable<OrderModel> {
-    return this.dataSource.saveOrder(order);
+  saveOrder(order: OrderModel) {
+    return this.firebase.createOrder(order);
   }
 
   updateOrder(order: OrderModel) {
-    this.dataSource.updateOrder(order).subscribe(
+    this.firebase.updateOrder(order).then(
       O => {
+        // @ts-ignore
         this.orders.splice(this.orders.findIndex(o => o.id === order.id), 1 , order);
       }
     );
   }
 
-  deleteOrder(id: number) {
-    this.dataSource.deleteOrder(id).subscribe(order => {
-      this.orders.splice(this.orders.findIndex(o => id === o.id));
+  deleteOrder(order: OrderModel) {
+    this.firebase.deleteOrder(order).then(o => {
+      // @ts-ignore
+      // tslint:disable-next-line:no-shadowed-variable
+      this.orders.splice(this.orders.findIndex(o => o.id === order.id), 1 , order);
     });
   }
 }

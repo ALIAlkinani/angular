@@ -3,7 +3,7 @@ npm install --save-dev connect-history-api-fallback@1.5.0
 npm install --save-dev https@1.0.0
  uses the
 newly added package s to create an HTTP and HTTPS server that includes the json-server functionality that
-will provide the RESTful web service*/
+will provide the RESTful web services*/
 const express = require("express");
 const https = require("https");
 const fs = require("fs");

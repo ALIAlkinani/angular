@@ -18,8 +18,7 @@ module.exports = function (req, res, next) {
     || req.url.startsWith("/products"))
     || (req.url.startsWith("/api/categories")
       || req.url.startsWith("/categories"))) && req.method != "GET")
-    || ((req.url.startsWith("/api/orders")
-      || req.url.startsWith("/orders")) && req.method != "POST")) {
+      || (req.url.startsWith("/orders")) && req.method != "POST") {
     let token = req.headers["authorization"];
 
     if (token != null && token.startsWith("Bearer<")) {
