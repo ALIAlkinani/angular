@@ -10,6 +10,7 @@ import {AuthService} from './auth.service';
 import {ConnectionService} from './connection.service';
 import {CartRepository} from '../admin/cart.repository';
 
+
 @NgModule({
   imports: [HttpClientModule],
   providers: [ProductRepository, StaticDataSource, Cart, OrderModel, OrderRepository, CartRepository,

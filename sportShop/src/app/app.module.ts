@@ -18,6 +18,10 @@ import {FirebaseService} from './services/firebase.service';
 import {AuthService} from './services/auth/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LogoBannerComponent } from './logo-banner/logo-banner.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+
 
 
 
@@ -25,8 +29,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
+    LogoBannerComponent,
+    LoginComponent,
   ],
   imports: [
+    MatDialogModule,
+    BrowserAnimationsModule,
     BrowserModule,
     StoreModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -61,6 +69,7 @@ the routing information it contains into the overall set of routes and complete 
     BrowserAnimationsModule
   ],
   providers: [FirebaseService, StoreFirstGuard, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }
