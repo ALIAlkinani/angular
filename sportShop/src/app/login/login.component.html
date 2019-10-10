@@ -1,19 +1,100 @@
+<div *ngIf="login">
 
 
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="onNoClick()">&times;</button>
-        <h4>Login or Register</h4>
-        <form class="aa-login-form" action="">
-          <label for="username">Username or Email address<span>*</span></label>
-          <input id="username" type="text" placeholder="Username or email">
-          <label for="password">Password<span>*</span></label>
-          <input id="password" type="password" placeholder="Password">
-          <button class="aa-browse-btn" type="submit">Login</button>
-          <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
-          <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-          <div class="aa-register-now">
-            Don't have an account?<a href="account.html">Register now!</a>
-          </div>
-        </form>
+  <div class="login-popup">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="onNoClick()">&times;</button>
+    <h4>Login or Register</h4>
+    <form class="aa-login-form" novalidate #form="ngForm" (ngSubmit)="authenticate(form)">
+      <label for="username">Username or Email address<span>*</span></label>
+      <input class="form-control" name="username"  id="username" type="email" [(ngModel)]="userName" email="true"
+             placeholder="Username or email" #username="ngModel" required >
+      <div *ngIf="username.invalid && (username.dirty || username.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="username.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="username.errors.email">
+          must be email Format !! example@gmail.com
+        </div>
+
+
       </div>
+      <label for="Password">Password<span>*</span></label>
+      <input id="Password"  class="form-control" name="Password" type="password" placeholder="Password" [(ngModel)]="password" #Password="ngModel" required minlength="8" (ngModelChange)="checkPassword(password)" >
+      <div *ngIf="Password.invalid && (Password.dirty || Password.touched)"
+           class="alert alert-danger">
 
+        <div *ngIf="Password.errors.required">
+          Password is required.
+        </div>
+
+        <div *ngIf="Password.errors.minlength">
+          Password must be longer than 8 letters
+
+        </div>
+
+      </div>
+      <div *ngIf="errorMessage.length" class="alert alert-danger" >
+
+        <div *ngFor="let message of errorMessage"> {{message}}</div>
+      </div>
+      <button class="aa-browse-btn" type="submit">Login</button>
+      <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+      <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+      <div class="aa-register-now">
+        <p class="registerLN" (click)="openRegister()">Don't have an account? Register now!</p>
+      </div>
+    </form>
+  </div>
+  <img class="img-social" src="../../assets/img/login/gp.png" (click)="google_login()">
+  <img class="img-social" src="../../assets/img/login/fb.png"(click)="facebook_login()">
+  <img class="img-social" src="../../assets/img/login/tw.png"(click)="twitter_login()">
+</div>
+
+
+<div *ngIf="register">
+  <div class="login-popup">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="onNoClick()">&times;</button>
+    <h4> Register</h4>
+    <form class="aa-login-form" novalidate #form="ngForm" (ngSubmit)="createUser(form)">
+      <label for="username">Username or Email address<span>*</span></label>
+      <input class="form-control" name="username"  id="usernameRE" type="email" [(ngModel)]="userName" email="true"
+             placeholder="Username or email" #username="ngModel" required >
+      <div *ngIf="username.invalid && (username.dirty || username.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="username.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="username.errors.email">
+          must be email Format !! example@gmail.com
+        </div>
+
+
+      </div>
+      <label for="Password">Password<span>*</span></label>
+      <input id="PasswordRE"  class="form-control" name="Password" type="password" placeholder="Password" [(ngModel)]="password" #Password="ngModel" required minlength="8" (ngModelChange)="checkPassword(password)" >
+      <div *ngIf="Password.invalid && (Password.dirty || Password.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="Password.errors.required">
+          Password is required.
+        </div>
+
+        <div *ngIf="Password.errors.minlength">
+          Password must be longer than 8 letters
+
+        </div>
+
+      </div>
+      <div *ngIf="errorMessage.length" class="alert alert-danger" >
+
+        <div *ngFor="let message of errorMessage"> {{message}}</div>
+      </div>
+      <button class="aa-browse-btn" type="submit"  [disabled]="errorMessage.length">Register</button>
+
+
+    </form>
+  </div>
+</div>

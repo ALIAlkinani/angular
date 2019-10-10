@@ -3,8 +3,7 @@ import {ProductRepository} from '../model/product.repository';
 import {Product} from '../model/product.model';
 import {Cart} from '../model/cart.module';
 import {Router} from '@angular/router';
-import {FirebaseService} from '../services/firebase.service';
-import {DocumentChangeAction} from '@angular/fire/firestore';
+
 
 
 @Component({
@@ -47,7 +46,7 @@ constructor( private repository: ProductRepository, private cart: Cart, private 
   }
   addProductToCart(product: Product) {
   this.cart.addLine(product);
-  this.router.navigateByUrl('/Cart');
+  // this.router.navigateByUrl('/Cart');
   }
   ngOnInit() {
   }

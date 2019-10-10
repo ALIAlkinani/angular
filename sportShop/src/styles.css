@@ -448,6 +448,9 @@ img {
   position: relative;
   padding-bottom: 10px;
 }
+#aa-header .aa-header-bottom .aa-cartbox:hover {
+ cursor: pointer;
+}
 #aa-header .aa-header-bottom .aa-cartbox .aa-cart-link {
   font-size: 22px;
   position: relative;

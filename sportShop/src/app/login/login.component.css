@@ -1,1 +1,16 @@
+.login-popup {
+  width: 600px;
+  height: 400px;
+}
+.registerLN:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.img-social{
+ border-radius: 50%;
+  cursor: pointer;
+  margin: 0 12px;
+  box-shadow: 0 0 20px 0  #7f7f7f3d;
+  width: 30px;
 
+}
